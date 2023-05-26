@@ -8,6 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class ProgramFixtures extends Fixture
 {
+
     public function load(ObjectManager $manager): void
     {
         $programs = [
@@ -49,7 +50,6 @@ class ProgramFixtures extends Fixture
             $program->setSynopsis($detail['synopsis']);
             $program->setPoster($detail['poster']);
             $program->setCategory($detail['category']);
-
             $manager->persist($program);
             $this->addReference('program_' . $detail['title'], $program);
         }
