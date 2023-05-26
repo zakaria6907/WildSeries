@@ -43,13 +43,15 @@ class ProgramFixtures extends Fixture
             ],
         ];
 
-        foreach ($programs as $data) {
+        foreach ($programs as $detail) {
             $program = new Program;
-            $program->setTitle($data['title']);
-            $program->setSynopsis($data['synopsis']);
-            $program->setPoster($data['poster']);
-            $program->setCategory($data['category']);
+            $program->setTitle($detail['title']);
+            $program->setSynopsis($detail['synopsis']);
+            $program->setPoster($detail['poster']);
+            $program->setCategory($detail['category']);
+
             $manager->persist($program);
+            $this->addReference('program_' . $detail['title'], $program);
         }
 
         $manager->flush();
